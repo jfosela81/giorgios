@@ -31,12 +31,22 @@
       "name": "Giorgio's Pizzeria",
       "shortName": "Giorgio's",
       "description": "Pizzas artesanales hechas con amor - Carta digital de Giorgio's",
+      "lang": "es",
       "themeColor": "#8B4513",
       "backgroundColor": "#ffffff",
       "display": "standalone",
-      "orientation": "portrait",
+      "orientation": "portrait-primary",
       "startUrl": "/",
-      "scope": "/"
+      "scope": "/",
+      "preferRelatedApplications": false,
+      "icons": [
+        {
+          "src": "./assets/icon.png",
+          "sizes": "any",
+          "type": "image/png",
+          "purpose": "any maskable"
+        }
+      ]
     },
     "plugins": [
       "expo-router",

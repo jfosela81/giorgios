@@ -1,0 +1,25 @@
+{
+  "name": "Giorgio's Pizzeria",
+  "short_name": "Giorgio's",
+  "description": "Pizzas artesanales hechas con amor - Carta digital de Giorgio's",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#8B4513",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
