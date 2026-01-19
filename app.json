@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "giorgios",
+    "name": "Giorgio's Pizzeria",
     "slug": "giorgios",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,17 +13,34 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.giorgios.pizzeria"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "package": "com.giorgios.pizzeria",
       "edgeToEdgeEnabled": true
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro",
+      "output": "static",
+      "name": "Giorgio's Pizzeria",
+      "shortName": "Giorgio's",
+      "description": "Pizzas artesanales hechas con amor - Carta digital de Giorgio's",
+      "themeColor": "#8B4513",
+      "backgroundColor": "#ffffff",
+      "display": "standalone",
+      "orientation": "portrait",
+      "startUrl": "/",
+      "scope": "/"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ]
   }
 }
