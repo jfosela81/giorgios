@@ -31,6 +31,7 @@ export default function Menu() {
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.listContainer}
         showsVerticalScrollIndicator={false}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
         renderItem={({ item }) => (
           <Link href={`/pizza/${item.id}`} asChild>
             <Pressable
@@ -40,7 +41,7 @@ export default function Menu() {
               ]}
             >
               <Image
-                source={{ uri: item.image }}
+                source={item.image}
                 style={styles.cardImage}
                 resizeMode="cover"
               />
@@ -85,10 +86,12 @@ const styles = StyleSheet.create({
   listContainer: {
     padding: 16,
   },
+  separator: {
+    height: 32,
+  },
   card: {
     backgroundColor: "#fff",
     borderRadius: 16,
-    marginBottom: 16,
     overflow: "hidden",
     elevation: 3,
     shadowColor: "#000",

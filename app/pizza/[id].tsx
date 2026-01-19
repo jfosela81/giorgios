@@ -40,7 +40,7 @@ export default function PizzaDetail() {
         
         {/* Imagen de la pizza */}
         <Image
-          source={{ uri: pizza.image }}
+          source={pizza.image}
           style={styles.pizzaImage}
           resizeMode="cover"
         />

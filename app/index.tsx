@@ -58,7 +58,7 @@ export default function Home() {
         <View style={styles.logoContainer}>
           {!logoImageError ? (
             <Image
-              source={require("../assets/images/logo.png")}
+              source={require("../assets/icon.png")}
               style={styles.logo}
               resizeMode="contain"
               onError={handleLogoError}
