@@ -14,6 +14,12 @@ export function usePizzaLikes(pizzaId: string) {
 
   const loadLikes = async () => {
     try {
+      if (!supabase) {
+        setLikes(0);
+        setLoading(false);
+        return;
+      }
+
       const { count, error } = await supabase
         .from('giorgios_pizza_likes')
         .select('*', { count: 'exact', head: true })
@@ -63,6 +69,11 @@ export function usePizzaLikes(pizzaId: string) {
 
   const addLike = async () => {
     try {
+      if (!supabase) {
+        console.warn('Supabase not configured');
+        return;
+      }
+
       // Obtener IP del cliente (en producción esto vendría del servidor)
       const clientIp = await getClientIp();
 
@@ -87,6 +98,11 @@ export function usePizzaLikes(pizzaId: string) {
 
   const removeLike = async () => {
     try {
+      if (!supabase) {
+        console.warn('Supabase not configured');
+        return;
+      }
+
       const clientIp = await getClientIp();
 
       const { error } = await supabase
