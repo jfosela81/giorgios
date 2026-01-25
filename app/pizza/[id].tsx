@@ -6,14 +6,18 @@ import {
   Image,
   ScrollView,
   StatusBar,
+  Pressable,
+  ActivityIndicator,
 } from "react-native";
 import { useLocalSearchParams, Stack } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { pizzas } from "../../data/pizzas";
+import { usePizzaLikes } from "../../hooks/usePizzaLikes";
 
 export default function PizzaDetail() {
   const { id } = useLocalSearchParams();
   const pizza = pizzas.find((p) => p.id === id);
+  const { likes, hasLiked, loading, toggleLike } = usePizzaLikes(id as string);
 
   if (!pizza) {
     return (
@@ -49,6 +53,27 @@ export default function PizzaDetail() {
         <View style={styles.content}>
           <View style={styles.titleContainer}>
             <Text style={styles.pizzaName}>{pizza.name}</Text>
+          </View>
+
+          {/* Sección de likes */}
+          <View style={styles.likesSection}>
+            <Pressable
+              style={({ pressed }) => [
+                styles.likeButton,
+                pressed && styles.likeButtonPressed,
+              ]}
+              onPress={toggleLike}
+              disabled={loading}
+            >
+              {loading ? (
+                <ActivityIndicator size="small" color="#E63946" />
+              ) : (
+                <Text style={styles.likeIcon}>{hasLiked ? "❤️" : "🤍"}</Text>
+              )}
+              <Text style={styles.likeCount}>
+                {likes} {likes === 1 ? "me gusta" : "me gusta"}
+              </Text>
+            </Pressable>
           </View>
 
           <View style={styles.section}>
@@ -104,6 +129,34 @@ const styles = StyleSheet.create({
     fontFamily: "InterBold",
     color: "#212529",
     marginBottom: 8,
+  },
+  likesSection: {
+    marginBottom: 24,
+    alignItems: "center",
+  },
+  likeButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#FFF5F5",
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 24,
+    borderWidth: 2,
+    borderColor: "#FED7D7",
+    gap: 8,
+  },
+  likeButtonPressed: {
+    opacity: 0.7,
+    transform: [{ scale: 0.95 }],
+  },
+  likeIcon: {
+    fontSize: 24,
+  },
+  likeCount: {
+    fontSize: 16,
+    fontFamily: "InterBold",
+    color: "#E63946",
   },
   section: {
     marginBottom: 24,
